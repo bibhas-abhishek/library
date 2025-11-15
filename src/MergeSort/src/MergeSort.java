@@ -3,32 +3,39 @@ import java.util.Arrays;
 
 public class MergeSort {
 
-    public void mergeSort(int[] array, int[] temp, int start, int end) {
-        if (start >= end)
-            return; // already sorted
+    public void mergeSort(int[] array, int[] temp, int low, int high) {
+        if (low >= high)
+            return;
 
-        int mid = (start + end) / 2;
-        mergeSort(array, temp, start, mid);
-        mergeSort(array, temp, mid + 1, end);
-        merge(array, temp, start, end);
+        int midpoint = (low + high) / 2;
+
+        mergeSort(array, temp, low, midpoint);         // left half
+        mergeSort(array, temp, midpoint + 1, high);    // right half
+        merge(array, temp, low, midpoint, high);
     }
 
-    private void merge(int[] array, int[] temp, int leftStart, int rightEnd) {
-        int leftEnd = (leftStart + rightEnd) / 2;
-        int rightStart = leftEnd + 1;
-        int l = leftStart;
-        int r = rightStart;
-        int index = leftStart;
-        while (l <= leftEnd && r <= rightEnd) {
-            if (array[l] <= array[r])
-                temp[index++] = array[l++];
-            else
-                temp[index++] = array[r++];
+    private void merge(int[] array, int[] temp, int low, int mid, int high) {
+        int leftIndex = low;
+        int rightIndex = mid + 1;
+        int tempIndex = low;
+
+        // Merge elements into temp
+        while (leftIndex <= mid && rightIndex <= high) {
+            if (array[leftIndex] <= array[rightIndex]) {
+                temp[tempIndex++] = array[leftIndex++];
+            } else {
+                temp[tempIndex++] = array[rightIndex++];
+            }
         }
 
-        System.arraycopy(array, l, temp, index, leftEnd - l + 1); // copy remaining left array elements
-        System.arraycopy(array, r, temp, index, rightEnd - r + 1); // copy remaining right array elements
-        System.arraycopy(temp, leftStart, array, leftStart, rightEnd - leftStart + 1); // copy temp back to main array
+        // Copy leftover left side
+        System.arraycopy(array, leftIndex, temp, tempIndex, mid - leftIndex + 1);
+
+        // Copy leftover right side
+        System.arraycopy(array, rightIndex, temp, tempIndex, high - rightIndex + 1);
+
+        // Copy merged range back to original array
+        System.arraycopy(temp, low, array, low, high - low + 1);
     }
 
     public static void main(String[] args) {
@@ -36,6 +43,6 @@ public class MergeSort {
         int[] array = {10, 5, 7, 8, 1, 2, 6, 3, 4, 9};
         int[] temp = new int[array.length];
         obj.mergeSort(array, temp, 0, array.length - 1);
-        Arrays.stream(array).mapToObj(e -> e + " ").forEach(System.out::print);
+        Arrays.stream(array).forEach(e -> System.out.print(e + " "));
     }
 }
