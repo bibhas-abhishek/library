@@ -68,7 +68,8 @@ public class HeapSort {
 
     public static void main(String[] args) {
         int[] array = {5, 1, 4, 2, 3, 6};
-        new HeapSort().heapSort(array);
+        HeapSort driver = new HeapSort();
+        driver.heapSort(array);
         Arrays.stream(array).mapToObj(i -> i + " ").forEach(System.out::print);
     }
 }

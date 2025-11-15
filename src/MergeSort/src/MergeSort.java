@@ -46,10 +46,10 @@ public class MergeSort {
     }
 
     public static void main(String[] args) {
-        MergeSort obj = new MergeSort();
+        MergeSort driver = new MergeSort();
         int[] array = {10, 5, 7, 8, 1, 2, 6, 3, 4, 9};
         int[] temp = new int[array.length];
-        obj.mergeSort(array, temp, 0, array.length - 1);
+        driver.mergeSort(array, temp, 0, array.length - 1);
         Arrays.stream(array).forEach(e -> System.out.print(e + " "));
     }
 }
