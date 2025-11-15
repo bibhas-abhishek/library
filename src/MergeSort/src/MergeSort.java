@@ -3,23 +3,30 @@ import java.util.Arrays;
 
 public class MergeSort {
 
+    // Recursively splits the array and merges sorted halves
     public void mergeSort(int[] array, int[] temp, int low, int high) {
-        if (low >= high)
+        if (low >= high)    // base case: single element
             return;
 
         int midpoint = (low + high) / 2;
 
-        mergeSort(array, temp, low, midpoint);         // left half
-        mergeSort(array, temp, midpoint + 1, high);    // right half
+        // Sort left half
+        mergeSort(array, temp, low, midpoint);
+
+        // Sort right half
+        mergeSort(array, temp, midpoint + 1, high);
+
+        // Merge sorted halves
         merge(array, temp, low, midpoint, high);
     }
 
+    // Merges two sorted subarrays: array[low..mid] and array[mid+1..high]
     private void merge(int[] array, int[] temp, int low, int mid, int high) {
-        int leftIndex = low;
-        int rightIndex = mid + 1;
-        int tempIndex = low;
+        int leftIndex = low;       // pointer for left subarray
+        int rightIndex = mid + 1;  // pointer for right subarray
+        int tempIndex = low;       // pointer in temp array
 
-        // Merge elements into temp
+        // Merge elements until one side is exhausted
         while (leftIndex <= mid && rightIndex <= high) {
             if (array[leftIndex] <= array[rightIndex]) {
                 temp[tempIndex++] = array[leftIndex++];
@@ -28,13 +35,13 @@ public class MergeSort {
             }
         }
 
-        // Copy leftover left side
+        // Copy leftovers from left side
         System.arraycopy(array, leftIndex, temp, tempIndex, mid - leftIndex + 1);
 
-        // Copy leftover right side
+        // Copy leftovers from right side
         System.arraycopy(array, rightIndex, temp, tempIndex, high - rightIndex + 1);
 
-        // Copy merged range back to original array
+        // Copy merged result back into original array
         System.arraycopy(temp, low, array, low, high - low + 1);
     }
 
