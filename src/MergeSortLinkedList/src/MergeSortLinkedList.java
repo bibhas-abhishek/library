@@ -49,25 +49,36 @@ public class MergeSortLinkedList {
         return slow;
     }
 
-    // Recursively merge two sorted lists and return merged head.
-    // Chooses the smaller head and recurses on the remainder.
+    // Iterative merge of two sorted lists using a dummy head.
     private ListNode mergeLists(ListNode headA, ListNode headB) {
-        if (headA == null) {
-            return headB;
-        }
-        if (headB == null) {
-            return headA;
+        // Dummy node simplifies head handling.
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+
+        ListNode a = headA;
+        ListNode b = headB;
+
+        // Walk both lists and append the smaller node each time.
+        while (a != null && b != null) {
+            if (a.val <= b.val) {
+                tail.next = a;
+                a = a.next;
+            } else {
+                tail.next = b;
+                b = b.next;
+            }
+            tail = tail.next;
         }
 
-        if (headA.val <= headB.val) {
-            // headA is smaller (or equal): headA.next becomes merge of remainder.
-            headA.next = mergeLists(headA.next, headB);
-            return headA;
-        } else {
-            // headB is smaller: headB.next becomes merge of remainder.
-            headB.next = mergeLists(headB.next, headA);
-            return headB;
+        // Attach whichever list still has nodes left.
+        if (a != null) {
+            tail.next = a;
+        } else if (b != null) {
+            tail.next = b;
         }
+
+        // Return merged list skipping the dummy node.
+        return dummy.next;
     }
 
     // Top-down merge sort for linked list: split, sort halves, then merge.
