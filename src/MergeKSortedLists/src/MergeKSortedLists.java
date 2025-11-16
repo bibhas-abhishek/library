@@ -3,44 +3,44 @@ import commons.ListNode;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+
 public class MergeKSortedLists {
 
-    // Merge K sorted linked lists using a min-heap.
-    // Push the head of each list into the heap. Repeatedly extract the
-    // smallest node, append it to the result, and if that node has a next,
-    // push the next node into the heap.
+    // Merge using a min-heap (priority queue).
+    // Repeatedly extracts the smallest current node among the k lists,
+    // appends it to the result, and if that node had a next node, pushes it into the heap.
+    // This builds the merged list iteratively in ascending order.
     public ListNode mergeKListsHeap(ListNode[] lists) {
         if (lists == null || lists.length == 0) {
             return null;
         }
 
+        // Min-heap ordered by node value to always take the smallest head among the lists.
         Queue<ListNode> minHeap = new PriorityQueue<>((a, b) -> a.val - b.val);
-
+        // Dummy node simplifies list assembly; tail points to last node in result.
         ListNode dummy = new ListNode(Integer.MIN_VALUE);
         ListNode tail = dummy;
-
-        // Insert non-null list heads into the heap
-        for (ListNode head : lists) {
-            if (head != null) {
-                minHeap.offer(head);
+        // Seed heap with the head of each non-empty list.
+        for (ListNode list : lists) {
+            if (list != null) {
+                minHeap.offer(list);
             }
         }
 
-        // Extract-min and build the merged list
+        // While there are nodes available from the k lists, take the smallest and append.
         while (!minHeap.isEmpty()) {
-            ListNode smallestNode = minHeap.poll();
-            tail.next = smallestNode;
+            tail.next = minHeap.poll();
             tail = tail.next;
-
-            if (smallestNode.next != null) {
-                minHeap.offer(smallestNode.next);
+            // If the appended node has a successor, push that successor to the heap.
+            if (tail.next != null) {
+                minHeap.offer(tail.next);
             }
         }
-
         return dummy.next;
     }
 
-    // Merge two sorted linked lists using recursion.
+    // Merge two sorted lists using recursion.
+    // Chooses the smaller head, links it to the result of merging the remainder, and returns the chosen node.
     private ListNode merge2Lists(ListNode headA, ListNode headB) {
         if (headA == null) {
             return headB;
@@ -51,17 +51,19 @@ public class MergeKSortedLists {
         }
 
         if (headA.val <= headB.val) {
+            // headA is smaller or equal: attach merged remainder after headA.
             headA.next = merge2Lists(headA.next, headB);
             return headA;
         } else {
+            // headB is smaller: attach merged remainder after headB.
             headB.next = merge2Lists(headB.next, headA);
             return headB;
         }
     }
 
-    // Divide-and-conquer: split K lists into two halves,
-    // recursively merge each half, then merge the two halves.
-    private ListNode mergeKListsRecursive(ListNode[] lists, int start, int end) {
+    // Divide-and-conquer helper: splits the array of lists into halves and merges each half.
+    // Recursively reduces the k-way merge to repeated 2-way merges.
+    private ListNode mergeKListsRec(ListNode[] lists, int start, int end) {
         if (start > end) {
             return null;
         }
@@ -71,63 +73,62 @@ public class MergeKSortedLists {
         }
 
         int mid = start + (end - start) / 2;
-
-        ListNode leftMerged = mergeKListsRecursive(lists, start, mid);
-        ListNode rightMerged = mergeKListsRecursive(lists, mid + 1, end);
-
-        return merge2Lists(leftMerged, rightMerged);
+        // Merge left half and right half independently, then merge the two results.
+        ListNode headA = mergeKListsRec(lists, start, mid);
+        ListNode headB = mergeKListsRec(lists, mid + 1, end);
+        return merge2Lists(headA, headB);
     }
 
-    // -------------------- DRIVER CODE --------------------
-    public static void main(String[] args) {
-        // Create sample lists for demonstration:
-        // List 1: 1 -> 4 -> 5
-        ListNode l1 = new ListNode(1);
-        l1.next = new ListNode(4);
-        l1.next.next = new ListNode(5);
+    // Public wrapper for the divide-and-conquer approach.
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) {
+            return null;
+        }
+        return mergeKListsRec(lists, 0, lists.length - 1);
+    }
 
-        // List 2: 1 -> 3 -> 4
-        ListNode l2 = new ListNode(1);
-        l2.next = new ListNode(3);
-        l2.next.next = new ListNode(4);
-
-        // List 3: 2 -> 6
-        ListNode l3 = new ListNode(2);
-        l3.next = new ListNode(6);
-
-        ListNode[] lists = new ListNode[]{l1, l2, l3};
-
-        MergeKSortedLists solver = new MergeKSortedLists();
-        ListNode merged = solver.mergeKListsHeap(lists);
-
-        // Print the merged output
-        ListNode temp = merged;
-        while (temp != null) {
-            System.out.print(temp.val);
-            if (temp.next != null) {
-                System.out.print(" -> ");
-            }
-            temp = temp.next;
+    private static void printList(ListNode head) {
+        while (head != null) {
+            System.out.print(head.val + (head.next != null ? "->" : ""));
+            head = head.next;
         }
         System.out.println();
     }
 
-    // -------------------- OVERALL TIME & SPACE COMPLEXITY --------------------
-    /*
-     * Overall Time Complexity:
-     *    O(N log K)
-     * Where:
-     *    K = number of sorted lists
-     *    N = total number of nodes across all lists
-     *
-     * Explanation:
-     *    The heap-based merge inserts each node once and each heap operation
-     *    (push/pop) costs O(log K). Thus processing all N nodes yields O(N log K).
-     *
-     * Overall Space Complexity:
-     *    O(K)
-     * Explanation:
-     *    The heap stores at most one node from each of the K lists. The output
-     *    list reuses existing nodes, so no extra list storage is added.
-     */
+    public static void main(String[] args) {
+        MergeKSortedLists driver = new MergeKSortedLists();
+
+        ListNode a1 = new ListNode(1);
+        ListNode a2 = new ListNode(4);
+        ListNode a3 = new ListNode(5);
+        a1.next = a2;
+        a2.next = a3;
+
+        ListNode b1 = new ListNode(0);
+        ListNode b2 = new ListNode(3);
+        ListNode b3 = new ListNode(4);
+        b1.next = b2;
+        b2.next = b3;
+
+        ListNode c1 = new ListNode(2);
+        ListNode c2 = new ListNode(6);
+        c1.next = c2;
+
+        ListNode[] lists = {a1, b1, c1};
+
+        ListNode result = driver.mergeKListsHeap(lists);
+        printList(result);
+    }
 }
+
+/*
+Overall time & space complexity (entire implementation)
+
+Overall (worst-case) time complexity: O(N log k)
+- N = total number of nodes across all input lists.
+- k = number of input lists.
+
+Overall (worst-case) auxiliary space complexity: O(k)
+- This reflects the maximum extra space used by the implementations in this file (heap storage and pointer overhead).
+- Note: recursive divide-and-conquer also uses recursion stack space (O(log k)), but the worst-case auxiliary space across the provided approaches is O(k).
+*/

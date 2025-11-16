@@ -4,58 +4,42 @@ import java.util.Stack;
 public class LargestRectangularAreaHistogram {
 
     public int getMaxArea(int[] hist, int n) {
-        // stack stores indices of bars in non-decreasing height order
-        Stack<Integer> stack = new Stack<>();
-        int maxArea = 0;
-        int index = 0;
+        Stack<Integer> stack = new Stack<>(); // stack stores indices of histogram bars
+        int maxArea = 0, top, topArea, i = 0;
 
         // Traverse all bars of the histogram
-        while (index < n) {
-            // If stack is empty OR current bar's height is >= height at stack top,
-            // push current index to stack (we can extend rectangles to the right).
-            if (stack.isEmpty() || hist[index] >= hist[stack.peek()]) {
-                // push index and then advance index
-                stack.push(index);
-                index++;
+        while (i < n) {
+            // If stack is empty or current bar is taller/equal than bar at stack top,
+            // push its index to the stack to extend possible rectangles to the right.
+            if (stack.isEmpty() || hist[i] >= hist[stack.peek()]) {
+                stack.push(i++);
             } else {
-                // Current bar is lower than bar at stack top, so calculate area
-                // with the bar at top of stack as the smallest (limiting) bar.
-                int topIndex = stack.pop();
-                int areaWithTop;
-
+                // Current bar is lower than stack top -> compute area for bar at top
+                top = stack.pop();
+                // If stack becomes empty, width extends from 0 to i-1 (i bars)
                 if (stack.isEmpty()) {
-                    // If stack is empty, the popped bar extends from 0 to current index-1
-                    areaWithTop = hist[topIndex] * index;
+                    topArea = hist[top] * i;
                 } else {
-                    // If stack is not empty, width is between stack.peek()+1 and index-1
-                    areaWithTop = hist[topIndex] * (index - stack.peek() - 1);
+                    // Otherwise width is between stack.peek()+1 and i-1
+                    topArea = hist[top] * (i - stack.peek() - 1);
                 }
-
-                // update maximum area found so far
-                if (areaWithTop > maxArea) {
-                    maxArea = areaWithTop;
-                }
+                // Update maximum area found so far
+                maxArea = Math.max(maxArea, topArea);
             }
         }
 
-        // Now pop remaining bars from stack and calculate area with each popped bar
+        // Process remaining bars in stack
         while (!stack.isEmpty()) {
-            int topIndex = stack.pop();
-            int areaWithTop;
-
+            top = stack.pop();
+            // If stack empty, width extends from 0 to n-1 (i == n here)
             if (stack.isEmpty()) {
-                // If stack empty, the popped bar spans entire histogram (0..n-1)
-                areaWithTop = hist[topIndex] * index;
+                topArea = hist[top] * i;
             } else {
-                // Otherwise it spans from stack.peek()+1 to n-1
-                areaWithTop = hist[topIndex] * (index - stack.peek() - 1);
+                // Otherwise width is between stack.peek()+1 and n-1
+                topArea = hist[top] * (i - stack.peek() - 1);
             }
-
-            if (areaWithTop > maxArea) {
-                maxArea = areaWithTop;
-            }
+            maxArea = Math.max(maxArea, topArea);
         }
-
         return maxArea;
     }
 
@@ -65,16 +49,7 @@ public class LargestRectangularAreaHistogram {
         System.out.println(driver.getMaxArea(hist, hist.length));
     }
 
-    /*
-     * Overall complexity of the implementation:
-     *
-     * Time complexity: O(n)
-     *   - Each bar index is pushed onto the stack at most once and popped at most once.
-     *   - All operations inside the loops are O(1), so the entire algorithm is linear
-     *     in the number of bars.
-     *
-     * Space complexity: O(n)
-     *   - In the worst case (strictly increasing heights) the stack can hold all n indices,
-     *     so additional space used is proportional to n.
-     */
+    // Overall complexity:
+    // Time complexity: O(n) — each bar index is pushed and popped at most once.
+    // Space complexity: O(n) — stack may hold up to n indices in the worst case.
 }
