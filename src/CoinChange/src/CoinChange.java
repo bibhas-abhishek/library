@@ -11,12 +11,12 @@ public class CoinChange {
     }
 
     // Recursive helper for top-down approach.
-    // remAmt: remaining amount to form.
+    // balance: remaining amount to form.
     // index: current coin index being considered.
-    // memo: maps "remAmt-index" -> number of ways to form remAmt using coins[index..end].
-    private int coinChangeTopDown(int[] coins, int remAmt, int index, Map<String, Integer> memo) {
+    // memo: maps "balance-index" -> number of ways to form balance using coins[index..end].
+    private int coinChangeTopDown(int[] coins, int balance, int index, Map<String, Integer> memo) {
         // If exact amount formed, this is one valid way.
-        if (remAmt == 0) {
+        if (balance == 0) {
             return 1;
         }
 
@@ -26,19 +26,19 @@ public class CoinChange {
         }
 
         // Use a combined key of remaining amount and index to memoize subproblems.
-        String key = remAmt + "-" + index;
+        String key = balance + "-" + index;
         if (memo.containsKey(key)) {
             return memo.get(key);
         }
 
         int include = 0;
         // Option 1: include current coin (stay at same index because coins can be reused).
-        if (coins[index] <= remAmt) {
-            include = coinChangeTopDown(coins, remAmt - coins[index], index, memo);
+        if (coins[index] <= balance) {
+            include = coinChangeTopDown(coins, balance - coins[index], index, memo);
         }
 
         // Option 2: skip current coin and move to next.
-        int exclude = coinChangeTopDown(coins, remAmt, index + 1, memo);
+        int exclude = coinChangeTopDown(coins, balance, index + 1, memo);
 
         // Total ways = ways including this coin + ways excluding it.
         int ways = include + exclude;
