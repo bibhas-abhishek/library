@@ -1,3 +1,5 @@
+// LC#21: Merge Two Sorted Lists
+
 package practice.mergetwosortedlists;
 
 import commons.ListNode;
@@ -24,25 +26,6 @@ class MergeTwoSortedLists {
         current.next = (list1 != null) ? list1 : list2;
 
         return dummy.next; // Skip dummy head, return actual merged list head
-
-        /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-        Time Complexity:
-            • Average Case: O(m + n)
-            • Worst Case:   O(m + n)
-
-            Explanation:
-            Each node from both lists is visited exactly once during the while loop,
-            where m and n are the lengths of list1 and list2 respectively.
-
-        Space Complexity:
-            • O(1)
-
-            Explanation:
-            Only a constant number of pointers (dummy, current) are used; nodes are
-            relinked in-place with no auxiliary data structures or recursion stack.
-
-        ------------------------------------------------------------------------ */
     }
 
     public static void main(String[] args) {
@@ -77,4 +60,23 @@ class MergeTwoSortedLists {
         }
         System.out.println(sb.toString().isEmpty() ? "(empty)" : sb.toString());
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(m + n)
+        • Worst Case:   O(m + n)
+
+        Explanation:
+        Each node from both lists is visited exactly once during the while loop,
+        where m and n are the lengths of list1 and list2 respectively.
+
+    Space Complexity:
+        • O(1)
+
+        Explanation:
+        Only a constant number of pointers (dummy, current) are used; nodes are
+        relinked in-place with no auxiliary data structures or recursion stack.
+
+    ------------------------------------------------------------------------ */
 }

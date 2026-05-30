@@ -51,19 +51,24 @@ public class QuickSort {
             System.out.print(c + " ");
         }
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(n log n)
+        • Worst Case:   O(n²)
+
+        Explanation:
+        On average, each partition splits the array roughly in half yielding O(log n)
+        levels of recursion with O(n) work per level. Worst case occurs when pivot
+        selection repeatedly gives highly unbalanced partitions.
+
+    Space Complexity:
+        • O(n)
+
+        Explanation:
+        Space is consumed by the recursive call stack — O(log n) levels for balanced
+        partitions, up to O(n) for maximally skewed ones (worst case).
+
+    ------------------------------------------------------------------------ */
 }
-
-/*
----------------------- OVERALL TIME & SPACE COMPLEXITY ----------------------
-
-Overall Time Complexity:
-    • Average Case: O(n log n)
-    • Worst Case:   O(n²)
-      (Occurs when pivot selection repeatedly gives highly unbalanced partitions)
-
-Overall Space Complexity:
-    • O(log n) on average due to recursive call stack
-    • O(n) in worst case (highly unbalanced recursion depth)
-
-------------------------------------------------------------------------
-*/

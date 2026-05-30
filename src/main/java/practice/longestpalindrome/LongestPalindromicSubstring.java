@@ -1,4 +1,6 @@
-package practice.longestpalindromicsubstring;
+// LC#5: Longest Palindromic Substring
+
+package practice.longestpalindrome;
 
 public class LongestPalindromicSubstring {
 
@@ -36,24 +38,24 @@ public class LongestPalindromicSubstring {
         LongestPalindromicSubstring driver = new LongestPalindromicSubstring();
         System.out.println(driver.longestPalindromicSubstring("forgeeksskeegfor"));
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(n^2)
+        • Worst Case: O(n^2)
+
+        Explanation:
+        The algorithm checks all substrings by length (1..n) and for each length
+        iterates start indices; overall the nested loops examine O(n^2) substrings,
+        and each check/update is O(1) using the dp table.
+
+    Space Complexity:
+        • O(n^2)
+
+        Explanation:
+        A boolean table dp[n][n] is used to record palindrome status for every
+        substring (i, j), so space grows proportional to n^2.
+
+    ------------------------------------------------------------------------ */
 }
-
-/* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-Time Complexity:
-    • Average Case: O(n^2)
-    • Worst Case: O(n^2)
-
-    Explanation:
-    The algorithm checks all substrings by length (1..n) and for each length
-    iterates start indices; overall the nested loops examine O(n^2) substrings,
-    and each check/update is O(1) using the dp table.
-
-Space Complexity:
-    • O(n^2)
-
-    Explanation:
-    A boolean table dp[n][n] is used to record palindrome status for every
-    substring (i, j), so space grows proportional to n^2.
-
------------------------------------------------------------------------- */

@@ -1,4 +1,6 @@
-package practice.largestrectangularareahistogram;
+// LC#84: Largest Rectangle in Histogram
+
+package practice.largestrectinhistogram;
 
 import java.util.Stack;
 

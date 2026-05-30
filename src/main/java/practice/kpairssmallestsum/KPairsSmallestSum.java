@@ -1,3 +1,5 @@
+// LC#373: Find K Pairs with Smallest Sums
+
 package practice.kpairssmallestsum;
 
 import java.util.ArrayList;
@@ -37,26 +39,6 @@ public class KPairsSmallestSum {
         return result;
     }
 
-    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-    Time Complexity:
-        • Average Case: O(k log k)
-        • Worst Case:   O(k log k)
-
-        Explanation:
-        We seed the heap with at most min(n, k) entries and then perform k
-        poll+offer cycles, each costing O(log k) since the heap size is bounded
-        by k at all times.
-
-    Space Complexity:
-        • O(k)
-
-        Explanation:
-        The min-heap holds at most min(n, k) entries initially and stays bounded
-        by k throughout; the result list grows to exactly k pairs.
-
-    ------------------------------------------------------------------------ */
-
     public static void main(String[] args) {
         // Test case 1: Standard — first 3 pairs from sorted candidate sequence
         int[] nums1 = {1, 7, 11};
@@ -81,4 +63,24 @@ public class KPairsSmallestSum {
         // List<List<Integer>> result3 = driver.kSmallestPairs(nums1c, nums2c, kc);
         // System.out.println("Result: " + result3); // Expected: [[1,3],[2,3]]
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(k log k)
+        • Worst Case:   O(k log k)
+
+        Explanation:
+        We seed the heap with at most min(n, k) entries and then perform k
+        poll+offer cycles, each costing O(log k) since the heap size is bounded
+        by k at all times.
+
+    Space Complexity:
+        • O(k)
+
+        Explanation:
+        The min-heap holds at most min(n, k) entries initially and stays bounded
+        by k throughout; the result list grows to exactly k pairs.
+
+    ------------------------------------------------------------------------ */
 }

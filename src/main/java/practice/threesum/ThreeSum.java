@@ -1,3 +1,5 @@
+// LC#15: 3Sum
+
 package practice.threesum;
 
 import java.util.ArrayList;
@@ -49,26 +51,6 @@ class ThreeSum {
         return result;
     }
 
-    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-    Time Complexity:
-        • Average Case: O(n²)
-        • Worst Case:   O(n²)
-
-        Explanation:
-        Sorting costs O(n log n); the outer loop runs O(n) times and each
-        iteration drives a two-pointer pass that is O(n), yielding O(n²) overall,
-        which dominates.
-
-    Space Complexity:
-        • O(n) — or O(1) excluding output
-
-        Explanation:
-        The sorting step uses O(log n) stack space (in-place); no auxiliary data
-        structures are allocated beyond the output list itself.
-
-    ------------------------------------------------------------------------ */
-
     public static void main(String[] args) {
         ThreeSum driver = new ThreeSum();
 
@@ -87,4 +69,24 @@ class ThreeSum {
         // System.out.println(driver.threeSum(nums3));
         // Expected: []
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(n²)
+        • Worst Case:   O(n²)
+
+        Explanation:
+        Sorting costs O(n log n); the outer loop runs O(n) times and each
+        iteration drives a two-pointer pass that is O(n), yielding O(n²) overall,
+        which dominates.
+
+    Space Complexity:
+        • O(1)
+
+        Explanation:
+        The sorting step uses O(log n) stack space (in-place); no auxiliary data
+        structures are allocated beyond the output list itself.
+
+    ------------------------------------------------------------------------ */
 }

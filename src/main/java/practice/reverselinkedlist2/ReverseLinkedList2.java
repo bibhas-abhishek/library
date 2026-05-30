@@ -1,3 +1,5 @@
+// LC#92: Reverse Linked List II
+
 package practice.reverselinkedlist2;
 
 import commons.ListNode;
@@ -28,25 +30,6 @@ public class ReverseLinkedList2 {
 
         return dummy.next;
     }
-
-    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-    Time Complexity:
-        • Average Case: O(n)
-        • Worst Case:   O(n)
-
-        Explanation:
-        We make one pass of up to (left - 1) steps to reach prevLeft, then at most
-        (right - left) steps for the reversal loop — both bounded by n in total.
-
-    Space Complexity:
-        • O(1)
-
-        Explanation:
-        Only a constant number of pointer variables are used; no auxiliary data
-        structures are allocated regardless of input size.
-
-    ------------------------------------------------------------------------ */
 
     public static void main(String[] args) {
         ReverseLinkedList2 driver = new ReverseLinkedList2();
@@ -84,4 +67,23 @@ public class ReverseLinkedList2 {
         sb.append("]");
         System.out.println(sb.toString());
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(n)
+        • Worst Case:   O(n)
+
+        Explanation:
+        We make one pass of up to (left - 1) steps to reach prevLeft, then at most
+        (right - left) steps for the reversal loop — both bounded by n in total.
+
+    Space Complexity:
+        • O(1)
+
+        Explanation:
+        Only a constant number of pointer variables are used; no auxiliary data
+        structures are allocated regardless of input size.
+
+    ------------------------------------------------------------------------ */
 }

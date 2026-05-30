@@ -1,4 +1,6 @@
-package practice.verticalordertraversalbinarytree;
+// LC#987: Vertical Order Traversal of a Binary Tree
+
+package practice.verticalordertraversal;
 
 import commons.TreeNode;
 import java.util.ArrayList;
@@ -54,24 +56,24 @@ public class VerticalOrderTraversalBinaryTree {
         printVerticalOrder(root);
         System.out.println();
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(N log N)
+        • Worst Case:   O(N log N)
+
+        Explanation:
+        Each of the N nodes is visited once, and inserting each node's value into
+        the TreeMap costs O(log N) due to balanced-tree operations. Hence the total
+        time is O(N log N).
+
+    Space Complexity:
+        • O(N)
+
+        Explanation:
+        The TreeMap stores all N node values, and the recursion stack in the worst
+        case can add additional nodes but still remains within O(N) space.
+
+    ------------------------------------------------------------------------ */
 }
-
-/* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-Time Complexity:
-    • Average Case: O(N log N)
-    • Worst Case:   O(N log N)
-
-    Explanation:
-    Each of the N nodes is visited once, and inserting each node's value into
-    the TreeMap costs O(log N) due to balanced-tree operations. Hence the total
-    time is O(N log N).
-
-Space Complexity:
-    • O(N)
-
-    Explanation:
-    The TreeMap stores all N node values, and the recursion stack in the worst
-    case can add additional nodes but still remains within O(N) space.
-
------------------------------------------------------------------------- */

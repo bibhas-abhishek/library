@@ -1,3 +1,5 @@
+// LC#14: Longest Common Prefix
+
 package practice.longestcommonprefix;
 
 public class LongestCommonPrefix {
@@ -21,26 +23,6 @@ public class LongestCommonPrefix {
         return prefix;
     }
 
-    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-    Time Complexity:
-        • Average Case: O(S) where S = total characters across all strings
-        • Worst Case:   O(S) — all strings are identical; every character is compared
-
-        Explanation:
-        In the worst case, indexOf scans the full prefix against each string, which
-        across all strings totals at most S character comparisons. Each shrink step
-        reduces work in subsequent iterations, so O(S) is the tight bound.
-
-    Space Complexity:
-        • O(m) where m = length of the first string
-
-        Explanation:
-        The only extra storage is the prefix string, which starts at length m and only
-        shrinks; no auxiliary data structures are used.
-
-    ------------------------------------------------------------------------ */
-
     public static void main(String[] args) {
         // Test case 1: Normal input with shared prefix
         String[] strs = {"flower", "flow", "flight"};
@@ -59,4 +41,24 @@ public class LongestCommonPrefix {
         // String result3 = driver.longestCommonPrefix(strs3);
         // System.out.println("Result: " + result3); // Expected: "a"
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(S)
+        • Worst Case:   O(S)
+
+        Explanation:
+        S = total characters across all strings. In the worst case, indexOf scans
+        the full prefix against each string, totaling at most S character comparisons.
+        Each shrink step reduces work in subsequent iterations.
+
+    Space Complexity:
+        • O(m)
+
+        Explanation:
+        The only extra storage is the prefix string (m = length of first string),
+        which starts at length m and only shrinks; no auxiliary data structures are used.
+
+    ------------------------------------------------------------------------ */
 }

@@ -1,3 +1,5 @@
+// LC#221: Maximal Square
+
 package practice.largestsquareinmatrix;
 
 public class LargestSquareInMatrix {
@@ -50,22 +52,22 @@ public class LargestSquareInMatrix {
         System.out.println("Largest square side length: " + maxSide);
         System.out.println("Largest square area: " + (maxSide * maxSide));
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(m * n)
+        • Worst Case: O(m * n)
+
+        Explanation:
+        We visit each cell once and do O(1) work per cell computing the dp value,
+        so the runtime is proportional to the number of cells (m rows × n columns).
+
+    Space Complexity:
+        • O(m * n)
+
+        Explanation:
+        We allocate a dp table of size (m+1) × (n+1) which is Θ(m * n) extra space.
+
+    ------------------------------------------------------------------------ */
 }
-
-/* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-Time Complexity:
-    • Average Case: O(m * n)
-    • Worst Case: O(m * n)
-
-    Explanation:
-    We visit each cell once and do O(1) work per cell computing the dp value,
-    so the runtime is proportional to the number of cells (m rows × n columns).
-
-Space Complexity:
-    • O(m * n)
-
-    Explanation:
-    We allocate a dp table of size (m+1) × (n+1) which is Θ(m * n) extra space.
-
------------------------------------------------------------------------- */

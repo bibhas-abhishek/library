@@ -1,3 +1,5 @@
+// LC#1143: Longest Common Subsequence
+
 package practice.longestcommonsubsequence;
 
 import java.util.Stack;
@@ -74,23 +76,23 @@ public class LongestCommonSubsequence {
         int result = driver.longestCommonSubsequence("ABDCGHCD", "ABGD");
         System.out.println(result);
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(m * n)
+        • Worst Case:   O(m * n)
+
+        Explanation:
+        The algorithm fills an (m+1) by (n+1) DP table once, performing O(1) work per cell,
+        so total time is proportional to the number of cells, m * n (where m = s1.length(), n = s2.length()).
+
+    Space Complexity:
+        • O(m * n)
+
+        Explanation:
+        The algorithm stores the full DP table of size (m+1) × (n+1). Additional space for the stack
+        during backtracking is at most O(min(m, n)), which is dominated by the O(m * n) table.
+
+    ------------------------------------------------------------------------ */
 }
-
-/* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-Time Complexity:
-    • Average Case: O(m * n)
-    • Worst Case:  O(m * n)
-
-    Explanation:
-    The algorithm fills an (m+1) by (n+1) DP table once, performing O(1) work per cell,
-    so total time is proportional to the number of cells, m * n (where m = s1.length(), n = s2.length()).
-
-Space Complexity:
-    • O(m * n)
-
-    Explanation:
-    The algorithm stores the full DP table of size (m+1) × (n+1). Additional space for the stack
-    during backtracking is at most O(min(m, n)), which is dominated by the O(m * n) table.
-
------------------------------------------------------------------------- */

@@ -1,3 +1,5 @@
+// LC#98: Validate Binary Search Tree
+
 package practice.checkifbst;
 
 import commons.TreeNode;
@@ -62,23 +64,23 @@ public class CheckIfBST {
         // Should print: true
         System.out.println(driver.checkBST(root));
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(n)
+        • Worst Case: O(n)
+
+        Explanation:
+        The algorithm visits each node exactly once in the recursive traversal to validate BST properties,
+        so time grows linearly with the number of nodes n.
+
+    Space Complexity:
+        • O(h)
+
+        Explanation:
+        Space is dominated by the recursion stack of height h (tree height). In the worst case (skewed tree)
+        h = n, giving O(n) auxiliary space; for a balanced tree h = O(log n).
+
+    ------------------------------------------------------------------------ */
 }
-
-/* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-Time Complexity:
-    • Average Case: O(n)
-    • Worst Case: O(n)
-
-    Explanation:
-    The algorithm visits each node exactly once in the recursive traversal to validate BST properties,
-    so time grows linearly with the number of nodes n.
-
-Space Complexity:
-    • O(h)
-
-    Explanation:
-    Space is dominated by the recursion stack of height h (tree height). In the worst case (skewed tree)
-    h = n, giving O(n) auxiliary space; for a balanced tree h = O(log n).
-
------------------------------------------------------------------------- */

@@ -1,3 +1,5 @@
+// LC#101: Symmetric Tree
+
 package practice.symmetricbinarytree;
 
 import commons.TreeNode;
@@ -37,7 +39,7 @@ public class SymmetricBinaryTree {
 
     Time Complexity:
         • Average Case: O(n)
-        • Worst Case:  O(n)
+        • Worst Case:   O(n)
 
         Explanation:
         Each node of the tree is visited once during the mirrored DFS comparison,

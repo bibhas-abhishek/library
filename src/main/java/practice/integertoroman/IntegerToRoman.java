@@ -1,3 +1,5 @@
+// LC#12: Integer to Roman
+
 package practice.integertoroman;
 
 public class IntegerToRoman {
@@ -19,6 +21,19 @@ public class IntegerToRoman {
         return sb.toString();
     }
 
+    public static void main(String[] args) {
+        IntegerToRoman driver = new IntegerToRoman();
+
+        // Test case 1: Standard multi-symbol number
+        System.out.println(driver.intToRoman(3749)); // Expected: "MMMDCCXLIX"
+
+        // Test case 2: Subtractive notation (CM, XC, IV)
+        // System.out.println(driver.intToRoman(1994)); // Expected: "MCMXCIV"
+
+        // Test case 3: Power of 10
+        // System.out.println(driver.intToRoman(58)); // Expected: "LVIII"
+    }
+
     /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
 
     Time Complexity:
@@ -37,17 +52,4 @@ public class IntegerToRoman {
         (at most ~15 characters for 3888 = "MMMDCCCLXXXVIII") are used — no input-scaled storage.
 
     ------------------------------------------------------------------------ */
-
-    public static void main(String[] args) {
-        IntegerToRoman driver = new IntegerToRoman();
-
-        // Test case 1: Standard multi-symbol number
-        System.out.println(driver.intToRoman(3749)); // Expected: "MMMDCCXLIX"
-
-        // Test case 2: Subtractive notation (CM, XC, IV)
-        // System.out.println(driver.intToRoman(1994)); // Expected: "MCMXCIV"
-
-        // Test case 3: Power of 10
-        // System.out.println(driver.intToRoman(58)); // Expected: "LVIII"
-    }
 }

@@ -1,4 +1,6 @@
-package practice.connectedistands;
+// LC#200: Number of Islands
+
+package practice.connectedislands;
 
 public class ConnectedIslands {
 
@@ -55,24 +57,24 @@ public class ConnectedIslands {
         int result = driver.numIslands(grid);
         System.out.println("Number of Islands: " + result);
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(M × N)
+        • Worst Case:   O(M × N)
+
+        Explanation:
+        Every cell in the M × N grid is visited at most once — the outer loop
+        touches each cell, and DFS only re-enters cells that are still '1',
+        which are immediately sunk to '0', preventing revisits.
+
+    Space Complexity:
+        • O(M × N)
+
+        Explanation:
+        In the worst case (the entire grid is one island), the DFS call stack
+        reaches a depth of M × N recursive frames before unwinding.
+
+    ------------------------------------------------------------------------ */
 }
-
-/* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-Time Complexity:
-    • Average Case: O(M × N)
-    • Worst Case:   O(M × N)
-
-    Explanation:
-    Every cell in the M × N grid is visited at most once — the outer loop
-    touches each cell, and DFS only re-enters cells that are still '1',
-    which are immediately sunk to '0', preventing revisits.
-
-Space Complexity:
-    • O(M × N)
-
-    Explanation:
-    In the worst case (the entire grid is one island), the DFS call stack
-    reaches a depth of M × N recursive frames before unwinding.
-
------------------------------------------------------------------------- */

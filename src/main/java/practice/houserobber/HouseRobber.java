@@ -1,3 +1,5 @@
+// LC#198: House Robber
+
 package practice.houserobber;
 
 public class HouseRobber {
@@ -27,23 +29,23 @@ public class HouseRobber {
         HouseRobber driver = new HouseRobber();
         System.out.println(driver.rob(arr));
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(n)
+        • Worst Case:   O(n)
+
+        Explanation:
+        The loop processes each house exactly once, and each iteration does only
+        constant-time comparisons, giving linear time overall.
+
+    Space Complexity:
+        • O(n)
+
+        Explanation:
+        The dp array stores one computed value per house, requiring linear
+        auxiliary space in proportion to the input size.
+
+    ------------------------------------------------------------------------ */
 }
-
-/* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-Time Complexity:
-    • Average Case: O(n)
-    • Worst Case:  O(n)
-
-    Explanation:
-    The loop processes each house exactly once, and each iteration does only
-    constant-time comparisons, giving linear time overall.
-
-Space Complexity:
-    • O(n)
-
-    Explanation:
-    The dp array stores one computed value per house, requiring linear
-    auxiliary space in proportion to the input size.
-
------------------------------------------------------------------------- */

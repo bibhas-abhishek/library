@@ -1,3 +1,5 @@
+// LC#53: Maximum Subarray
+
 package practice.maximumsubarraysum;
 
 public class MaximumSubarraySum {
@@ -47,23 +49,23 @@ public class MaximumSubarraySum {
         System.out.println(driver.maximumSubarraySum(nums));
         System.out.println(driver.maximumSubarraySumDP(nums));
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(n)
+        • Worst Case: O(n)
+
+        Explanation:
+        Both methods scan the entire array once. Each iteration performs constant-time
+        operations, so the total running time increases linearly with array size.
+
+    Space Complexity:
+        • O(n)
+
+        Explanation:
+        The DP implementation allocates an auxiliary dp[] array proportional to the
+        input array size, resulting in linear additional space usage.
+
+    ------------------------------------------------------------------------ */
 }
-
-/* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-Time Complexity:
-    • Average Case: O(n)
-    • Worst Case: O(n)
-
-    Explanation:
-    Both methods scan the entire array once. Each iteration performs constant-time
-    operations, so the total running time increases linearly with array size.
-
-Space Complexity:
-    • O(n)
-
-    Explanation:
-    The DP implementation allocates an auxiliary dp[] array proportional to the
-    input array size, resulting in linear additional space usage.
-
------------------------------------------------------------------------- */

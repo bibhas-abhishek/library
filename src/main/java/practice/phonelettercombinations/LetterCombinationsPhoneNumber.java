@@ -1,4 +1,6 @@
-package practice.lettercombinationsofaphonenumber;
+// LC#17: Letter Combinations of a Phone Number
+
+package practice.phonelettercombinations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,25 +44,6 @@ class LetterCombinationsPhoneNumber {
         }
     }
 
-    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
-
-    Time Complexity:
-        • Average Case: O(4^n * n)
-        • Worst Case:   O(4^n * n)
-
-        Explanation:
-        At each of the n digits, we branch into at most 4 letters (e.g., '7' → "pqrs").
-        Building and storing each complete combination costs O(n), giving O(4^n * n) overall.
-
-    Space Complexity:
-        • O(n)
-
-        Explanation:
-        The recursion call stack goes n levels deep (one per digit), and the StringBuilder
-        holds at most n characters at any point — output list storage excluded.
-
-    ------------------------------------------------------------------------ */
-
     public static void main(String[] args) {
         LetterCombinationsPhoneNumber driver = new LetterCombinationsPhoneNumber();
 
@@ -88,4 +71,23 @@ class LetterCombinationsPhoneNumber {
         // System.out.println("Input: \"79\" → " + result4);
         // Expected: [pw, px, py, pz, qw, qx, qy, qz, rw, rx, ry, rz, sw, sx, sy, sz]
     }
+
+    /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
+
+    Time Complexity:
+        • Average Case: O(4^n * n)
+        • Worst Case:   O(4^n * n)
+
+        Explanation:
+        At each of the n digits, we branch into at most 4 letters (e.g., '7' → "pqrs").
+        Building and storing each complete combination costs O(n), giving O(4^n * n) overall.
+
+    Space Complexity:
+        • O(n)
+
+        Explanation:
+        The recursion call stack goes n levels deep (one per digit), and the StringBuilder
+        holds at most n characters at any point — output list storage excluded.
+
+    ------------------------------------------------------------------------ */
 }
