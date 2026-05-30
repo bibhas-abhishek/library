@@ -1,6 +1,8 @@
 package practice.lettercombinationsofaphonenumber;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 class LetterCombinationsPhoneNumber {
     // Map each digit to its corresponding phone keypad letters
