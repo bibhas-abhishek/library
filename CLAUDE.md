@@ -50,7 +50,7 @@ Space Complexity:
     // LC#322: Coin Change
     ```
 
-6. **Imports and package declarations** — Include necessary `import` statements after the problem definition header. Do **not** include `package` declarations (the user handles those separately).
+6. **Imports and package declarations** — Include necessary `import` statements after the problem definition header. Always import specific classes (e.g., `import java.util.HashMap;`), never use wildcard imports (e.g., `import java.util.*;`). Do **not** include `package` declarations (the user handles those separately).
 
 7. **Driver function for questions** — Provide a separate code snippet with `public static void main(String[] args)` that:
     - Does **not** include import statements (imports are already handled in the main solution code)
@@ -88,6 +88,13 @@ Space Complexity:
     - Never write: `if (root == null) return 0;`
 
 9. **Follow all rules strictly** — No exceptions or deviations.
+
+10. **Post-generation build steps** — After generating code in IDE mode, always run:
+    ```bash
+    mvn spotless:apply
+    mvn clean install
+    ```
+    This ensures consistent formatting and verifies the project compiles successfully.
 
 ## Output Structure for Questions
 
