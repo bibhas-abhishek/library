@@ -1,6 +1,6 @@
 // LC#105: Construct Binary Tree from Preorder and Inorder Traversal
 
-package practice.buildtreefromtraversals;
+package practice.buildtreepreorderinorder;
 
 import commons.TreeNode;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
-public class BuildTreeFromTraversals {
+public class BuildTreePreorderInorder {
 
     // Index tracker for the current position in preorder array
     private int preorderIndex;
@@ -53,7 +53,7 @@ public class BuildTreeFromTraversals {
 
     public static void main(String[] args) {
         // Test case 1: preorder=[3,9,20,15,7], inorder=[9,3,15,20,7]
-        BuildTreeFromTraversals driver = new BuildTreeFromTraversals();
+        BuildTreePreorderInorder driver = new BuildTreePreorderInorder();
         int[] preorder = {3, 9, 20, 15, 7};
         int[] inorder = {9, 3, 15, 20, 7};
         TreeNode result = driver.buildTree(preorder, inorder);

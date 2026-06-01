@@ -50,9 +50,11 @@ Space Complexity:
     // LC#322: Coin Change
     ```
 
-6. **Imports and package declarations** — Include necessary `import` statements after the problem definition header. Always import specific classes (e.g., `import java.util.HashMap;`), never use wildcard imports (e.g., `import java.util.*;`). Do **not** include `package` declarations (the user handles those separately).
+6. **Class naming** — Name the class using descriptive PascalCase matching the problem (e.g., `CoinChange`, `FlattenBinaryTree`, `GenerateParentheses`). Never use generic names like `Solution`.
 
-7. **Driver function for questions** — Provide a separate code snippet with `public static void main(String[] args)` that:
+7. **Imports and package declarations** — Include necessary `import` statements after the problem definition header. Always import specific classes (e.g., `import java.util.HashMap;`), never use wildcard imports (e.g., `import java.util.*;`). Do **not** include `package` declarations (the user handles those separately).
+
+8. **Driver function for questions** — Provide a separate code snippet with `public static void main(String[] args)` that:
     - Does **not** include import statements (imports are already handled in the main solution code)
     - Tests the solution with test cases from the problem source (LeetCode, etc.); if the problem has no standard source, create 2–3 representative cases covering normal input, edge cases, and boundary conditions
     - The first test case should be **uncommented** and executable
@@ -77,7 +79,7 @@ Space Complexity:
       }
       ```
 
-8. **Code formatting rules** — When writing code for solutions:
+9. **Code formatting rules** — When writing code for solutions:
     - Always use braces `{}` for single-statement blocks (if, else, for, while, etc.)
     - Example:
       ```java
@@ -87,9 +89,9 @@ Space Complexity:
       ```
     - Never write: `if (root == null) return 0;`
 
-9. **Follow all rules strictly** — No exceptions or deviations.
+10. **Follow all rules strictly** — No exceptions or deviations.
 
-10. **Post-generation build steps** — After generating code in IDE mode, always run:
+11. **Post-generation build steps** — After generating code in IDE mode, always run:
     ```bash
     mvn spotless:apply
     mvn clean install
@@ -107,7 +109,7 @@ When solving a question, provide output in this exact order:
 // Package declaration
 // Imports
 // Solution class with inline comments and complexity analysis at the bottom
-class Solution {
+class <ProblemName> {
     // ... solution code with comments
 
     /* ---------------------- TIME & SPACE COMPLEXITY ----------------------
