@@ -28,7 +28,7 @@ class FindPeakElement {
 
     public static void main(String[] args) {
         // Test case 1: Peak in the middle
-        int[] nums = {1, 2, 3, 1};
+        int[] nums = {1, 2, 1, 3, 5, 6, 4};
 
         FindPeakElement driver = new FindPeakElement();
         int result = driver.findPeakElement(nums);
