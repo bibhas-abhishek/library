@@ -3,6 +3,7 @@
 - If the user provides **a question or problem** (including a LeetCode URL): write and comment an **optimal solution** (best time/space complexity possible for the problem).
 - **Default programming language**: Java (unless the user specifies otherwise).
 - **IDE mode** — When working in an IDE (e.g., IntelliJ), create a new package under `src/main/java/practice/<problemname>/` with a single Java file containing the solution. The package name should be all-lowercase, concise, and descriptive (e.g., `generateparentheses`). Follow all rules below for the file content.
+- **Design patterns** — Place design pattern implementations under `src/main/java/designpatterns/<patternname>/` (e.g., `designpatterns/strategypattern/`). Do **not** put them under `practice/`.
 
 ## Rules for All Inputs
 
